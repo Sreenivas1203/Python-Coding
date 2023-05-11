@@ -1,0 +1,31 @@
+from IPython.display import clear_output
+def add(n1,n2):
+    return n1+n2
+def sub(n1,n2):
+    return n1-n2
+def mul(n1,n2):
+    return n1*n2
+def div(n1,n2):
+    return n1/n2
+def exp(n1,n2):
+    return n1**n2
+dict={ "+":add, "-":sub, "*":mul, "/":div, "**":exp}
+def calculator():
+    num1=float(input("Enter a Number:"))
+    for key in dict:
+        print(key)
+    should_continue=True
+    while should_continue:
+        symbol = input("Pick any operation from the above:")
+        num2 = float(input("Enter another  Number:"))
+        calculation_function = dict[symbol]
+        answer = calculation_function(num1, num2)
+        print(f"{num1} {symbol} {num2} = {answer}")
+        if input(f"Type 'y' to continue with {answer}: or type 'n' to start:") == "y":
+             num1=answer
+        else:
+            should_continue=False
+            clear_output()
+            calculator()
+
+calculator()
